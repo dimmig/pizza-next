@@ -3,7 +3,6 @@
 import React, {useState} from "react";
 import {FilterCheckbox, FilterCheckboxProps} from "@/components/shared/filterCheckbox";
 import {Input} from "@/components/ui/input";
-import {Button} from "@/components/ui/button";
 import {Skeleton} from "@/components/ui/skeleton";
 
 type Item = FilterCheckboxProps

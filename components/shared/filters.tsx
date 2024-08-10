@@ -6,10 +6,9 @@ import {Input} from "@/components/ui/input";
 import {RangeSlider} from "@/components/shared/rangeSlider";
 import {CheckboxFiltersGroup} from "@/components/shared/checkboxFiltersGroup";
 import {useFilterIngredients} from "@/hooks/useFilterIngredients";
-import {useSearchParam, useSet} from "react-use";
+import {useSet} from "react-use";
 import qs from "qs"
 import {useRouter, useSearchParams} from "next/navigation";
-import {Ingredient} from "@prisma/client";
 
 interface Props {
     className?: string
@@ -28,17 +27,16 @@ interface QueryFilters extends PriceProps {
 export const Filters: React.FC<Props> = ({className}) => {
     const router = useRouter()
     const searchParams = useSearchParams() as unknown as Map<keyof QueryFilters, string>
-    const { ingredients, loading, selectedIngredients, toggleId } = useFilterIngredients(searchParams.get("selectedIngredients")?.split(','))
+    const { ingredients, loading, selectedIngredients, toggleId } = useFilterIngredients((searchParams.get("selectedIngredients"))?.split(','))
     const [price, setPrice] = useState<PriceProps>({
         priceFrom: Number(searchParams.get("priceFrom")) || undefined,
         priceTo: Number(searchParams.get("priceTo")) || undefined
     })
-    console.log(selectedIngredients)
     const [selectedSizes, { toggle: toggleSizes }] = useSet(new Set<string>(searchParams.has("selectedSizes") ? searchParams.get("selectedSizes")?.split(',') : []))
     const [selectedPizzaTypes, { toggle: togglePizzaType }] = useSet(new Set<string>(searchParams.has("selectedPizzaTypes") ? searchParams.get("selectedPizzaTypes")?.split(',') : []))
+    console.log("INGRESIENTS: ", ingredients)
 
-
-    const items = ingredients.map(el => ({text: el.name, value: el.id}))
+    const items = ingredients.map(el => ({text: el.name, value: el.id.toString()}))
 
     const updatePrice = (name: keyof PriceProps, value: number) => {
         setPrice({

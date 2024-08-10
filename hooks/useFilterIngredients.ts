@@ -12,8 +12,9 @@ interface ReturnProps {
 export const useFilterIngredients = (values: string[] = []): ReturnProps => {
     const [ingredients, setIngredients] = useState<Ingredient[]>([])
     const [loading, setLoading] = useState(true)
+    console.log("VALUES: ", values)
     const [selectedIngredients, { toggle }] = useSet(new Set<string>(values))
-
+    console.log("SELECTED INGREDIENTS: ", selectedIngredients)
     useEffect(() => {
         async function fetchIngredients() {
             try {
@@ -29,6 +30,7 @@ export const useFilterIngredients = (values: string[] = []): ReturnProps => {
 
         fetchIngredients()
     }, [])
+
 
     return { ingredients, loading, toggleId: toggle, selectedIngredients}
 }
