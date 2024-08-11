@@ -18,9 +18,7 @@ interface Props {
 export const ProductsList: React.FC<Props> = ({title, items, listClassName, categoryId, className}) => {
     const setActiveCategoryId = useCategoryStore(state => state.setActiveId)
     const intersectionRef = useRef(null)
-    const intersection = useIntersection(intersectionRef, {
-        threshold: 0.4
-    })
+    const intersection = useIntersection(intersectionRef, {})
 
     useEffect(() => {
         if (intersection?.isIntersecting) {
@@ -37,8 +35,9 @@ export const ProductsList: React.FC<Props> = ({title, items, listClassName, cate
                         key={product.id}
                         id={product.id}
                         name={product.name}
-                        price={product.items[0].price}
-                        imageUrl={product.imageUrl}
+                        price={product.productVariationsId[0].price}
+                        imageUrl={product.image}
+                        ingredients={product.ingridients}
                     />
                 ))}
             </div>

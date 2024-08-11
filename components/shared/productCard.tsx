@@ -3,16 +3,18 @@ import Link from "next/link";
 import {Title} from "@/components/shared/title";
 import {Button} from "@/components/ui/button";
 import {Plus} from "lucide-react";
+import {Ingredient} from "@prisma/client";
 
 interface Props {
     id: number;
     name: string;
     price: number;
     imageUrl: string;
+    ingredients: Ingredient[]
     className?: string
 }
 
-export const ProductCard: React.FC<Props> = ({id, name, price, imageUrl, className}) => {
+export const ProductCard: React.FC<Props> = ({id, name, ingredients, price, imageUrl, className}) => {
     return (
         <div className={className}>
             <Link href={`/product/${id}`}>
@@ -20,8 +22,14 @@ export const ProductCard: React.FC<Props> = ({id, name, price, imageUrl, classNa
                     <img className='w-[215px] h-[215px]' src={imageUrl} alt={name}/>
                 </div>
             </Link>
-            <Title text="Papperoni" size='sm' className='mb-1 mt-3 font-bold' />
-            <p className='text-sm text-gray-400'>Chicken, pickles, cheese sauce, red onion, salami, mozzarella, garlic</p>
+            <Title text={name} size='sm' className='mb-1 mt-3 font-bold' />
+            <p className='text-sm text-gray-400'>{ingredients.map((ingredient, index) => {
+                if (index !== ingredients.length - 1) {
+                    return ingredient.name + ', '
+                } else {
+                    return ingredient.name
+                }
+            })}</p>
             <div className='flex justify-between items-center mt-4'>
                 <span className='text-[20px]'>
                     from <b>{price}</b> $
