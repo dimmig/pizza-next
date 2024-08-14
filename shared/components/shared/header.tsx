@@ -1,11 +1,11 @@
 import React from 'react';
-import {cn} from "@/lib/utils";
-import Container from "@/components/shared/container";
+import {cn} from "@/shared/lib/utils";
+import Container from "@/shared/components/shared/container";
 import Image from "next/image";
-import {Button} from "@/components/ui/button";
+import {Button} from "@/shared/components/ui/button";
 import {ArrowRight, ShoppingCart, User} from "lucide-react";
 import Link from "next/link";
-import {SearchInput} from "@/components/shared/searchInput";
+import {SearchInput} from "@/shared/components/shared/searchInput";
 
 
 interface Props {

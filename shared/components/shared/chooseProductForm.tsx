@@ -1,15 +1,11 @@
 import React from "react";
-import {Ingredient, ProductVariation} from "@prisma/client";
-import {cn} from "@/lib/utils";
-import {ProductImage} from "@/components/shared/ProductImage";
-import {Title} from "@/components/shared/title";
-import {Button} from "@/components/ui/button";
+import {cn} from "@/shared/lib/utils";
+import {Title} from "@/shared/components/shared/title";
+import {Button} from "@/shared/components/ui/button";
 
 interface Props {
     name: string;
     imageUrl: string;
-    ingredients: Ingredient[]
-    productVariations: ProductVariation[]
     onClickAdd?: VoidFunction
     className?: string
 }
@@ -18,7 +14,6 @@ export const ChooseProductForm: React.FC<Props> =
     ({
          name,
          imageUrl,
-         ingredients,
          productVariations,
          onClickAdd,
          className

@@ -1,9 +1,9 @@
-import Container from "@/components/shared/container";
-import {Title} from "@/components/shared/title";
-import TopBar from "@/components/shared/topBar";
+import Container from "@/shared/components/shared/container";
+import {Title} from "@/shared/components/shared/title";
+import TopBar from "@/shared/components/shared/topBar";
 import React from "react";
-import {Filters} from "@/components/shared/filters";
-import {ProductsList} from "@/components/shared/productsList";
+import {Filters} from "@/shared/components/shared/filters";
+import {ProductsList} from "@/shared/components/shared/productsList";
 import prisma from "@/prisma/prisma-client";
 
 export default async function Home() {

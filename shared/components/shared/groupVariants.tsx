@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react";
-import {cn} from "@/lib/utils";
+import {cn} from "@/shared/lib/utils";
 
 type Variant = {
     name: string;
@@ -16,7 +16,7 @@ interface Props {
 }
 export const GroupVariants: React.FC<Props> = ({ items, onClick, selectedValue, className }) => {
     return (
-        <div className={cn("flex justify-between bg-[#F3F3F7] rounded-3xl select-none p-1", className)}>
+        <div className={cn("flex justify-between bg-[#F3F3F7] rounded-3xl select-none p-1 mt-5", className)}>
             {items.map(item => (
                 <button
                     key={item.name}
