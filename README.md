@@ -75,4 +75,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## Contributing
 
-Contributions are welcome! Please open an issue or submit a pull request.
+Contributions are welcome! Please open an issue or submit a pull request!
